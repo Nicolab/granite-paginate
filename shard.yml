@@ -1,0 +1,17 @@
+name: granite-paginate
+version: 1.0.0
+crystal: 0.35.1
+
+authors:
+  - Nicolas Talle <dev@nicolab.net>
+
+license: MIT
+
+development_dependencies:
+  granite:
+    github: amberframework/granite
+    # version: ~> 0.21.0
+    commit: 9f03488c96b69696ef315b8fb3d2fac8fa376571
+  pg:
+    github: will/crystal-pg
+    version: ~> 0.21.1
