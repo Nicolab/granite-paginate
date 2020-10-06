@@ -18,7 +18,7 @@ Crystal shard adding pagination support for Granite ORM.
 
 ## Usage
 
-Add (require) `granite-paginate` shard after the Granite initialization.
+Add (require) `granite-paginate` shard after Granite initialization.
 
 ```crystal
 # TODO: Granite initialization here...
