@@ -50,6 +50,7 @@ services:
     build:
       context: ./
       # dockerfile: ./Dockerfile
+    user: ${CMD_USER:-app}
     volumes:
       - ./:/app/
     environment:

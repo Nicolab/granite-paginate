@@ -1,6 +1,7 @@
 # granite-paginate
 
-[![Build Status](https://travis-ci.com/Nicolab/granite-paginate.svg?branch=master)](https://travis-ci.com/Nicolab/granite-paginate) [![GitHub release](https://img.shields.io/github/release/Nicolab/granite-paginate.svg)](https://github.com/Nicolab/granite-paginate/releases) [![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](https://nicolab.github.io/granite-paginate/)
+
+[![CI Status](https://github.com/Nicolab/granite-paginate/workflows/CI/badge.svg?branch=master)](https://github.com/Nicolab/granite-paginate/actions) [![GitHub release](https://img.shields.io/github/release/Nicolab/granite-paginate.svg)](https://github.com/Nicolab/granite-paginate/releases) [![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](https://nicolab.github.io/granite-paginate/)
 
 Crystal shard adding pagination support for Granite ORM.
 
@@ -42,6 +43,14 @@ posts = Post.paginate(3000, 100)
 ```
 
 ## Development
+
+One line:
+
+```sh
+./scripts/develop
+```
+
+or splitted:
 
 Terminal 1:
 

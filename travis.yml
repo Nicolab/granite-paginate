@@ -1,6 +1,5 @@
 dist: bionic
-
-# language: generic
+language: generic
 
 services:
   - docker
@@ -14,12 +13,6 @@ before_install:
   - sudo apt-get update
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
 
-before_script:
-  - docker-compose up -d --build
-  - sleep 2
-
 script:
-  - docker-compose exec app just lint spec
-
-after_script:
-  - docker-compose down
+  # root required for file permissions in Travis VM
+  - CMD_USER=root ./scripts/check

@@ -6,6 +6,7 @@
 # ------------------------------------------------------------------------------
 
 require "spec"
+require "granite"
 require "granite/adapter/pg"
 require "../src/granite-paginate"
 

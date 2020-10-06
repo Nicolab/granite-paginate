@@ -18,23 +18,22 @@ RUN curl -L >watchexec.tar.xz https://github.com/watchexec/watchexec/releases/do
   && curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin/ \
   && just --version
 
+# create user and grant the perm on the source file folder
+RUN useradd -c 'App user' -m $user -o -u $uid
 WORKDIR /app
 
-# create user and grant the perm on the source file folder
-RUN useradd -c 'App user' -m $user -o -u $uid && chown -R ${user}:${user} /app
-USER ${user}
-
-# copy dependencies files
+# copy project files
 COPY --chown=${user}:${user} ./shard.yml ./
 COPY --chown=${user}:${user} ./justfile ./
 
-RUN shards install
+COPY --chown=${user}:${user} ./src ./
+COPY --chown=${user}:${user} ./spec ./
 
-# copy project files
-COPY --chown=${user}:${user} ./src /app
-COPY --chown=${user}:${user} ./spec /app
+RUN echo "CMD_USER: $CMD_USER" \
+  && rm -rf /app/lib /app/shard.lock \
+  && chown ${user}:${user} -R ./
 
-# COPY . /app
+USER ${user}
 
 # let it at the end. This way when there is a modification of the arg `APP_ENV`
 # it does not rebuild every previous commands
