@@ -31,15 +31,15 @@ services:
   # DB admin
   #--------------------------------------------------------------------------
 
-  adminer:
-    image: adminer
-    restart: unless-stopped
-    networks:
-      - db
-    ports:
-      - 8050:8080
-    depends_on:
-      - db
+  # adminer:
+  #   image: adminer
+  #   restart: unless-stopped
+  #   networks:
+  #     - db
+  #   ports:
+  #     - 8050:8080
+  #   depends_on:
+  #     - db
 
   # ----------------------------------------------------------------------------
   # App

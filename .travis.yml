@@ -19,8 +19,7 @@ before_script:
   - sleep 2
 
 script:
-  # TODO: add 'spec' recipe (bug travis)
-  - docker-compose exec app just lint
+  - docker-compose exec app just lint spec
 
 after_script:
   - docker-compose down

@@ -44,8 +44,3 @@ alias f := format
     ! grep --color -Enr '.{101}' spec/**.cr
     crystal tool format --check ./src ./spec
     @# check done!
-
-# Try to clean the workspace
-clean: format lint spec
-  @rm -f ./app
-  @echo All done!
