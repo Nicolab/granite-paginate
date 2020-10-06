@@ -7,7 +7,7 @@
 
 require "spec"
 require "granite/adapter/pg"
-require "../src/paginate"
+require "../src/granite-paginate"
 
 DB_URI = ENV["DB_URI"]
 

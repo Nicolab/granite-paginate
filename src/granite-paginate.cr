@@ -10,7 +10,10 @@ module Granite::Paginate
   VERSION = "1.0.0"
 
   # Ensures good numbers for the pagination.
-  def self.ensure_page(offset : Int32 = 0, limit : Int32 = 20) : {Int32, Int32}
+  def self.ensure_page(offset : Int32? = 0, limit : Int32? = 20) : {Int32, Int32}
+    offset = 0 if offset.nil?
+    limit = 0 if limit.nil?
+
     offset = 0 if offset < 0
     limit = 20 if limit < 1 || limit > 100
 

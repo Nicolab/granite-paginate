@@ -11,7 +11,7 @@ end
 
 class Granite::Query::Builder(Model)
   # Paginate the query.
-  def paginate(offset : Int32 = 0, limit : Int32 = 20)
+  def paginate(offset : Int32? = 0, limit : Int32? = 20)
     offset, limit = Granite::Paginate.ensure_page(offset, limit)
     self.offset(offset).limit(limit)
   end

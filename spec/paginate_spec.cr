@@ -26,7 +26,15 @@ describe "Granite::Paginate.ensure_page" do
   end
 
   it "should be returns default range with bad numbers" do
+    offset, limit = Paginate.ensure_page nil
+    offset.should eq 0
+    limit.should eq 20
+
     offset, limit = Paginate.ensure_page -1
+    offset.should eq 0
+    limit.should eq 20
+
+    offset, limit = Paginate.ensure_page nil, nil
     offset.should eq 0
     limit.should eq 20
 
@@ -158,6 +166,13 @@ describe "Ext: Granite paginate" do
 
     # offset and limit
     posts = Post.order(:id).paginate(-1, 101).select
+    posts.size.should eq 20
+    (posts.first.id.as(Int64) + 19).should eq posts.last.id
+    posts.first.id.should eq Post.order(:id).select.first.id
+    posts.last.id.should eq Post.order(:id).limit(20).select.last.id
+
+    # nilable offset and limit
+    posts = Post.order(:id).paginate(nil, nil).select
     posts.size.should eq 20
     (posts.first.id.as(Int64) + 19).should eq posts.last.id
     posts.first.id.should eq Post.order(:id).select.first.id
