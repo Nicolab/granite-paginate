@@ -152,7 +152,7 @@
   <dl>
     
       <dt class="entry-const" id="VERSION">
-        <strong>VERSION</strong> = <code><span class="s">&quot;1.0.0&quot;</span></code>
+        <strong>VERSION</strong> = <code>{{ (<span class="s">`shards version \&quot;/media/data/lab/dev/work/projects/nicolab/crystal/granite-paginate/src\&quot;`</span>).chomp.stringify.downcase }}</code>
       </dt>
       
     
@@ -173,7 +173,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#ensure_page(offset:Int32?=0,limit:Int32?=20):Tuple(Int32,Int32)-class-method" class="signature"><strong>.ensure_page</strong>(offset : Int32? = <span class="n">0</span>, limit : Int32? = <span class="n">20</span>) : Tuple(Int32, Int32)</a>
+        <a href="#ensure_page(offset:Int32%7CString%7CNil=0,limit:Int32%7CString%7CNil=20):Tuple(Int32,Int32)-class-method" class="signature"><strong>.ensure_page</strong>(offset : Int32 | String | Nil = <span class="n">0</span>, limit : Int32 | String | Nil = <span class="n">20</span>) : Tuple(Int32, Int32)</a>
         
           <div class="summary"><p>Ensures good numbers for the pagination.</p></div>
         
@@ -203,12 +203,12 @@
     Class Method Detail
   </h2>
   
-    <div class="entry-detail" id="ensure_page(offset:Int32?=0,limit:Int32?=20):Tuple(Int32,Int32)-class-method">
+    <div class="entry-detail" id="ensure_page(offset:Int32|String|Nil=0,limit:Int32|String|Nil=20):Tuple(Int32,Int32)-class-method">
       <div class="signature">
         
-        def self.<strong>ensure_page</strong>(offset : Int32? = <span class="n">0</span>, limit : Int32? = <span class="n">20</span>) : Tuple(Int32, Int32)
+        def self.<strong>ensure_page</strong>(offset : Int32 | String | Nil = <span class="n">0</span>, limit : Int32 | String | Nil = <span class="n">20</span>) : Tuple(Int32, Int32)
 
-        <a class="method-permalink" href="#ensure_page(offset:Int32?=0,limit:Int32?=20):Tuple(Int32,Int32)-class-method">#</a>
+        <a class="method-permalink" href="#ensure_page(offset:Int32%7CString%7CNil=0,limit:Int32%7CString%7CNil=20):Tuple(Int32,Int32)-class-method">#</a>
       </div>
       
         <div class="doc">
