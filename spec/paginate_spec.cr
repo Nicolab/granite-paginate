@@ -38,6 +38,10 @@ describe "Granite::Paginate.ensure_page" do
     offset.should eq 0
     limit.should eq 20
 
+    offset, limit = Paginate.ensure_page "abc", "abc"
+    offset.should eq 0
+    limit.should eq 20
+
     offset, limit = Paginate.ensure_page -1, -1
     offset.should eq 0
     limit.should eq 20
@@ -75,6 +79,10 @@ describe "Granite::Paginate.ensure_page" do
     offset, limit = Paginate.ensure_page 100_000, 40
     offset.should eq 100_000
     limit.should eq 40
+
+    offset, limit = Paginate.ensure_page "1", "1"
+    offset.should eq 1
+    limit.should eq 1
   end
 end
 
@@ -171,11 +179,18 @@ describe "Ext: Granite paginate" do
     posts.first.id.should eq Post.order(:id).select.first.id
     posts.last.id.should eq Post.order(:id).limit(20).select.last.id
 
-    # nilable offset and limit
+    # nillable offset and limit
     posts = Post.order(:id).paginate(nil, nil).select
     posts.size.should eq 20
     (posts.first.id.as(Int64) + 19).should eq posts.last.id
     posts.first.id.should eq Post.order(:id).select.first.id
     posts.last.id.should eq Post.order(:id).limit(20).select.last.id
+
+    # string offset and limit
+    posts = Post.order(:id).paginate("1", "2").select
+    posts.size.should eq 2
+    (posts.first.id.as(Int64) + 1).should eq posts.last.id
+    posts.first.id.should eq Post.order(:id).offset(1).limit(2).select.first.id
+    posts.last.id.should eq Post.order(:id).offset(1).limit(2).select.last.id
   end
 end

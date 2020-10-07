@@ -7,12 +7,27 @@
 
 # Pagination support for Granite.
 module Granite::Paginate
-  VERSION = "1.0.0"
+  VERSION = {{ `shards version "#{__DIR__}"`.chomp.stringify.downcase }}
+
+  # Returns *num* as `Int32` if resolved, `0` as `Int32` if unresolved.
+  private def self.resolve_num(num : Int32 | String | Nil) : Int32
+    return num if num.is_a? Int32
+    return 0 if num.nil?
+
+    num = num.to_i
+  rescue
+    num = 0
+
+    num
+  end
 
   # Ensures good numbers for the pagination.
-  def self.ensure_page(offset : Int32? = 0, limit : Int32? = 20) : {Int32, Int32}
-    offset = 0 if offset.nil?
-    limit = 0 if limit.nil?
+  def self.ensure_page(
+    offset : Int32 | String | Nil = 0,
+    limit : Int32 | String | Nil = 20
+  ) : {Int32, Int32}
+    offset = self.resolve_num offset
+    limit = self.resolve_num limit
 
     offset = 0 if offset < 0
     limit = 20 if limit < 1 || limit > 100
